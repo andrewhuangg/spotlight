@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // @desc      Register new user
 // @route     POST /api/auth/register
@@ -58,11 +59,16 @@ exports.login = async (req, res, next) => {
       return res.status(400).json('invalid user');
     }
 
+    // get signed JWT token
+    const signedToken = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRE,
+    });
+
     // return everything but the password
     const { password, ...userInfo } = user._doc;
 
     if (user && matchedPassword) {
-      res.status(200).json(userInfo);
+      res.status(200).json({ ...userInfo, signedToken });
     }
   } catch (error) {
     res.status(400).json(error.message);
