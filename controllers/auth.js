@@ -34,7 +34,7 @@ exports.register = async (req, res, next) => {
       res.status(200).json(newUser);
     }
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -49,14 +49,14 @@ exports.login = async (req, res, next) => {
 
     // check if user is found
     if (!user) {
-      return res.status(400).json('invalid user');
+      return res.status(400).json({ error: 'invalid user' });
     }
 
     // check for matched password
     const matchedPassword = await bcrypt.compare(req.body.password, user.password);
 
     if (!matchedPassword) {
-      return res.status(400).json('invalid user');
+      return res.status(400).json({ error: 'login failed' });
     }
 
     // get signed JWT token
@@ -71,6 +71,6 @@ exports.login = async (req, res, next) => {
       res.status(200).json({ ...userInfo, signedToken });
     }
   } catch (error) {
-    res.status(400).json(error.message);
+    res.status(400).json({ error: error.message });
   }
 };

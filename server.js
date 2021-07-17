@@ -13,6 +13,7 @@ connectDB();
 // LOAD ROUTERS
 const auth = require('./routes/auth');
 const users = require('./routes/users');
+const movies = require('./routes/movies');
 const app = express();
 
 // EXPRESS MIDDLEWARE
@@ -21,6 +22,7 @@ app.use(express.json());
 // MOUNT ROUTERS
 app.use('/api/auth', auth);
 app.use('/api/users', users);
+app.use('/api/movies', movies);
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, console.log(`Server running on port ${PORT}`.yellow.bold));

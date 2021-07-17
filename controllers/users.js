@@ -15,14 +15,21 @@ exports.updateUser = async (req, res, next) => {
         req.body.password = hashedPassword;
       }
 
-      const user = await User.findByIdAndUpdate(req.user.id, req.body, { new: true });
+      const user = await User.findById(req.params.id);
+      if (!user) {
+        return res.status(400).json({ error: 'user does not exist' });
+      }
 
-      return res.status(200).json(user);
+      if (user) {
+        const updatedUser = await User.findByIdAndUpdate(req.user.id, req.body, { new: true });
+
+        return res.status(200).json(updatedUser);
+      }
     } else {
-      res.status(403).json('you are not authorized to update this account');
+      res.status(403).json({ error: 'you are not authorized to update this account' });
     }
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -36,10 +43,10 @@ exports.deleteUser = async (req, res, next) => {
       await User.findByIdAndDelete(req.user.id);
       return res.status(200).json('User has been deleted...');
     } else {
-      res.status(403).json('you are not authorized to delete this account');
+      res.status(403).json({ error: 'you are not authorized to delete this account' });
     }
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -51,16 +58,16 @@ exports.getUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id).select('-password');
     if (!user) {
-      return res.status(404).json('user was not found');
+      return res.status(404).json({ error: 'user was not found' });
     }
 
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
 
-// @desc      FETCH all users
+// @desc      FETCH all users or new users
 // @route     GET /api/users | /api/users/new?=true
 // @access    Private
 
@@ -71,10 +78,10 @@ exports.getUsers = async (req, res, next) => {
       const users = query ? await User.find().sort({ _id: -1 }).limit(10) : await User.find();
       return res.status(200).json(users);
     } else {
-      res.status(403).json('you are not authorized to see new users');
+      res.status(403).json({ error: 'you are not authorized to see new users' });
     }
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -100,6 +107,6 @@ exports.getUserStats = async (req, res, next) => {
     ]);
     res.status(200).json(data);
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
