@@ -14,8 +14,10 @@ exports.createMovie = async (req, res, next) => {
 
       if (!movieExists) {
         const newMovie = await Movie.create(req.body);
-        res.status(200).json(newMovie);
+        return res.status(200).json(newMovie);
       }
+    } else {
+      res.status(403).json({ error: 'you are not authorized to create a movie' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -35,8 +37,10 @@ exports.updateMovie = async (req, res, next) => {
       }
       if (movie) {
         const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.status(200).json(updatedMovie);
+        return res.status(200).json(updatedMovie);
       }
+    } else {
+      res.status(403).json({ error: 'you are not authorized to update a movie' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -51,7 +55,9 @@ exports.deleteMovie = async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
       await Movie.findByIdAndDelete(req.params.id);
-      res.status(200).json({ error: 'movie deleted' });
+      res.status(200).json({ message: 'movie deleted' });
+    } else {
+      res.status(403).json({ error: 'you are not authorized to delete a movie' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -107,8 +113,10 @@ exports.getRandomMovies = async (req, res, next) => {
 exports.getMovies = async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
-      const movies = await Movie.find();
-      res.status(200).json(movies);
+      const movies = await Movie.find().sort({ createdAt: -1 });
+      return res.status(200).json(movies);
+    } else {
+      res.status(403).json({ error: 'you are not authorized to fetch all movies' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });

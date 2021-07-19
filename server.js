@@ -14,6 +14,7 @@ connectDB();
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const movies = require('./routes/movies');
+const lists = require('./routes/lists');
 const app = express();
 
 // EXPRESS MIDDLEWARE
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use('/api/auth', auth);
 app.use('/api/users', users);
 app.use('/api/movies', movies);
+app.use('/api/lists', lists);
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, console.log(`Server running on port ${PORT}`.yellow.bold));

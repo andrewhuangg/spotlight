@@ -21,7 +21,7 @@ exports.updateUser = async (req, res, next) => {
       }
 
       if (user) {
-        const updatedUser = await User.findByIdAndUpdate(req.user.id, req.body, { new: true });
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
         return res.status(200).json(updatedUser);
       }
@@ -41,7 +41,7 @@ exports.deleteUser = async (req, res, next) => {
   try {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       await User.findByIdAndDelete(req.user.id);
-      return res.status(200).json('User has been deleted...');
+      return res.status(200).json({ message: 'User has been deleted...' });
     } else {
       res.status(403).json({ error: 'you are not authorized to delete this account' });
     }
