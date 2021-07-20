@@ -1,0 +1,74 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 0.875rem;
+  z-index: 999;
+  color: white;
+  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
+
+  &.scrolled {
+    background-color: $main;
+  }
+
+  &__container {
+    padding: 0rem 3.125rem;
+    height: 4.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 1.5625rem;
+      margin-right: 2.5rem;
+    }
+
+    span {
+      margin-right: 1.25rem;
+      cursor: pointer;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    img {
+      width: 1.875rem;
+      height: 1.875rem;
+      border-radius: 0.3125rem;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    margin: 0rem 0.9375rem;
+    cursor: pointer;
+  }
+
+  &__profile {
+    span {
+      padding: 0.625rem;
+      cursor: pointer;
+    }
+
+    &:hover {
+      #options {
+        position: absolute;
+        display: flex;
+        flex-flow: column nowrap;
+      }
+    }
+  }
+
+  &__options {
+    display: none;
+    background-color: $main;
+    border-radius: 0.3125rem;
+  }
+}
