@@ -1,0 +1,78 @@
+.featured {
+  height: 90vh;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__category {
+    position: absolute;
+    top: 5rem;
+    left: 3.125rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.875rem;
+    font-weight: 500;
+    color: white;
+
+    select {
+      margin-left: 1.25rem;
+      padding: 0.3125rem;
+      color: white;
+      background-color: $main;
+      border: 1px solid white;
+      cursor: pointer;
+    }
+  }
+
+  &__info {
+    left: 3.125rem;
+    bottom: 6.25rem;
+    width: 35%;
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    color: white;
+
+    img {
+      width: 25rem;
+    }
+  }
+
+  &__description {
+    margin: 1.25rem 0rem;
+  }
+
+  &__cta {
+    display: flex;
+    button {
+      padding: 0.625rem 1.25rem;
+      margin-right: 0.625rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 0.3125rem;
+      cursor: pointer;
+
+      span {
+        margin-left: 0.3125rem;
+      }
+    }
+  }
+
+  &__play-btn {
+    background-color: white;
+    color: $main;
+  }
+
+  &__more-btn {
+    background-color: gray;
+    color: white;
+  }
+}

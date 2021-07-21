@@ -9,8 +9,6 @@ const Navbar = () => {
     return () => (window.onscroll = null);
   };
 
-  console.log(isScrolled);
-
   return (
     <div className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className='navbar__container'>
