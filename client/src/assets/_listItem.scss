@@ -2,5 +2,81 @@
   width: 14.0625rem;
   height: 7.5rem;
   margin-right: 0.3125rem;
-  background-color: white;
+  background-color: $main;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  video {
+    width: 100%;
+    height: 8.75rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+
+  &:hover {
+    width: 20.3125rem;
+    height: 18.75rem;
+    position: absolute;
+    top: -9.375rem;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+    box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+    border-radius: 0.3125rem;
+
+    img {
+      height: 8.75rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0.3125rem;
+  }
+
+  &__icons {
+    margin-bottom: 0.625rem;
+    display: flex;
+  }
+
+  &__icon {
+    margin-right: 0.625rem;
+    padding: 0.3125rem;
+    font-size: 1rem;
+    border: 2px solid white;
+    border-radius: 50%;
+  }
+
+  &__top {
+    margin-bottom: 0.625rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: gray;
+  }
+
+  &__age-limit {
+    margin: 0 0.625rem;
+    padding: 0.0625rem 0.1875rem;
+    border: 1px solid gray;
+  }
+
+  &__description {
+    margin-bottom: 0.625rem;
+    font-size: 0.8125rem;
+  }
+
+  &__genre {
+    font-size: 0.875rem;
+    color: lightgray;
+  }
 }

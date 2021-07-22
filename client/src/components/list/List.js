@@ -38,23 +38,25 @@ const List = () => {
   return (
     <div className='list'>
       <span className='list__title'>Continue to watch</span>
+
       <div className='list__wrapper'>
         <ArrowBackIosOutlined
           className='list__sliderArrow left'
           onClick={() => handleSlider('left')}
           style={{ display: !isLeftSlide && 'none' }}
         />
+
         <div className='list__container' ref={listRef}>
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
+          <ListItem index={0} />
+          <ListItem index={1} />
+          <ListItem index={2} />
+          <ListItem index={3} />
+          <ListItem index={4} />
+          <ListItem index={5} />
+          <ListItem index={6} />
+          <ListItem index={7} />
+          <ListItem index={8} />
+          <ListItem index={9} />
         </div>
         <ArrowForwardIosOutlined
           className='list__sliderArrow right'
