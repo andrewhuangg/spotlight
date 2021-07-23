@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Search, Notifications, ArrowDropDown, AccountCircle } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const mountedRef = useRef(true);
 
-  window.onscroll = () => {
-    setIsScrolled(window.pageYOffset === 0 ? false : true);
-    return () => (window.onscroll = null);
-  };
+  const windowScroll = useCallback(
+    (window.onscroll = () => {
+      if (!mountedRef) return null;
+      if (mountedRef) setIsScrolled(window.pageYOffset === 0 ? false : true);
+    }),
+    [mountedRef]
+  );
+
+  useEffect(() => {
+    windowScroll();
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   return (
     <div className={`navbar ${isScrolled ? 'scrolled' : ''}`}>

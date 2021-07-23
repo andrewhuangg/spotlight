@@ -1,29 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { PlayArrow, InfoOutlined } from '@material-ui/icons';
 import axios from 'axios';
 
 const Featured = ({ type }) => {
   const [content, setContent] = useState({});
+  const mountedRef = useRef(true);
 
-  useEffect(() => {
-    const getRandomMovie = async () => {
+  const fetchRandomMovie = useCallback(
+    async (type) => {
       try {
         const { data } = await axios.get(`movies/random?type=${type}`, {
           headers: {
             token:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjYwODJkN2VmY2M4MGRiMjJiNzM4MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNjk5NTg5OSwiZXhwIjoxNjI3MDgyMjk5fQ.o5f1mTGU2PK7o-UqWanhPRTreVOzVwsfU48EjFQlSrI',
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjYwODJkN2VmY2M4MGRiMjJiNzM4MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNjk5ODUyOSwiZXhwIjoxNjI3MDg0OTI5fQ.m4kjuUf8EF__EH05dIysh8Kb--6-Rqr6vAj7xDnBfws',
           },
         });
-        setContent(data[0]);
+        if (!mountedRef.current) return null;
+        if (mountedRef.current) setContent(data[0]);
       } catch (error) {
         console.log(error);
       }
+    },
+    [mountedRef]
+  );
+
+  useEffect(() => {
+    fetchRandomMovie(type);
+    return () => {
+      mountedRef.current = false;
     };
-    getRandomMovie();
-  }, []);
+  }, [type, fetchRandomMovie]);
 
   return (
-    <div className='featured'>
+    <div className='featured' ref={mountedRef}>
       {type && (
         <div className='featured__category'>
           <span>{type === 'movies' ? 'Movies' : 'Series'}</span>

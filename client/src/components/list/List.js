@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@material-ui/icons';
 import ListItem from '../listItem/ListItem';
 
-const List = ({ list }) => {
+const List = ({ list, mountedRef }) => {
   const [isLeftSlide, setIsLeftSlide] = useState(false);
   const [isRightSlide, setIsRightSlide] = useState(true);
   const [listPosition, setListPosition] = useState(0);
@@ -36,7 +36,7 @@ const List = ({ list }) => {
   };
 
   return (
-    <div className='list'>
+    <div className='list' ref={mountedRef}>
       <span className='list__title'>{list.title}</span>
 
       <div className='list__wrapper'>

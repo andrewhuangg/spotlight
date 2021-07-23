@@ -36,12 +36,13 @@ const ListItem = ({ index, item }) => {
   }, [item, fetchMovie]);
 
   return (
-    <Link to={{ pathname: '/watch', movie: movie }} ref={mountedRef}>
+    <Link to={{ pathname: '/watch', movie: movie }}>
       <div
         className='listitem'
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{ left: isHovered && index * 225 + index * 2.5 }}
+        ref={mountedRef}
       >
         <img src={movie.imagePin} alt='' />
 
