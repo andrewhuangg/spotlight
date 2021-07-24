@@ -1,0 +1,8 @@
+.main {
+  flex: 4;
+
+  &__widgets {
+    display: flex;
+    margin: 1.25rem;
+  }
+}

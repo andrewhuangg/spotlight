@@ -19,10 +19,10 @@ const Navbar = () => {
     return () => {
       mountedRef.current = false;
     };
-  }, []);
+  }, [windowScroll]);
 
   return (
-    <div className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <div className={`navbar ${isScrolled ? 'scrolled' : ''}`} ref={mountedRef}>
       <div className='navbar__container'>
         <div className='navbar__left'>
           <Link to='/' className='navbar__link'>

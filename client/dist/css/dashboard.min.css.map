@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,AAAC,CACT,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CAMb,AAJE,AAAD,qBAAY,AAAC,CACX,OAAO,CAAE,IAAI,CACb,UAAU,CAAE,QAAQ,CACrB",
+    "sources": [
+        "../../src/assets/dashboard.scss"
+    ],
+    "names": [],
+    "file": "dashboard.min.css"
+}

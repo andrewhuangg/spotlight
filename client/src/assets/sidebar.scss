@@ -1,0 +1,44 @@
+.sidebar {
+  flex: 1;
+  height: calc(100vh - 3.125rem);
+  position: sticky;
+  top: 3.125rem;
+  background-color: hsl(240, 100%, 99%);
+
+  &__wrapper {
+    padding: 1.25rem;
+    color: darkgray;
+  }
+
+  &__menu {
+    margin-bottom: 0.625rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: lightgray;
+  }
+
+  &__list {
+    padding: 0.3125rem;
+  }
+
+  &__list-item {
+    padding: 0.3125rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 0.625rem;
+
+    &:hover,
+    &:active {
+      background-color: hsl(240, 69%, 94%);
+    }
+  }
+
+  &__icon {
+    margin-right: 0.3125rem;
+    font-size: 1.25rem !important;
+  }
+}

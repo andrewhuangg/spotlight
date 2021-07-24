@@ -1,0 +1,54 @@
+.featuredinfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &__item {
+    flex: 1;
+    margin: 0rem 1.25rem;
+    padding: 1.875rem;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  }
+
+  &__title {
+    font-size: 1.25rem;
+  }
+
+  &__money-container {
+    margin: 0.625rem 0rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__money {
+    font-size: 1.875rem;
+    font-weight: 600;
+  }
+
+  &__rate {
+    display: flex;
+    align-items: center;
+    margin-left: 1.25rem;
+  }
+
+  &__icon {
+    font-size: 0.875rem;
+    margin-left: 0.3125rem;
+
+    &.positive {
+      color: green;
+    }
+
+    &.negative {
+      color: red;
+    }
+  }
+
+  &__sub {
+    font-size: 0.9375rem;
+    color: gray;
+  }
+}

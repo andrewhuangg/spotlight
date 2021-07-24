@@ -6,7 +6,7 @@
   z-index: 999;
   color: white;
   background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
-  transition: background 1s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
 
   &.scrolled {
     background-color: $main;
