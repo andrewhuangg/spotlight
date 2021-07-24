@@ -1,0 +1,113 @@
+.user {
+  flex: 4;
+  padding: 1.25rem;
+
+  &__title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+  }
+
+  &__add-btn {
+    width: 5rem;
+    border: none;
+    padding: 0.3125rem;
+    background-color: hsl(122, 46%, 54%);
+    border-radius: 0.3125rem;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  &__container {
+    margin-top: 1.25rem;
+    display: flex;
+  }
+
+  &__show {
+    flex: 1;
+    padding: 1.25rem;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  }
+
+  &__update {
+    flex: 1;
+    padding: 1.25rem;
+    margin-left: 1.25rem;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__header {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 1.25rem;
+  }
+
+  &__username {
+    font-weight: 600;
+  }
+
+  &__user-title {
+    font-weight: 300;
+  }
+
+  &__bottom {
+    margin-top: 1.25rem;
+  }
+
+  &__details {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: hsl(0, 1%, 69%);
+  }
+
+  &__info-container {
+    display: flex;
+    align-items: center;
+    margin: 1.25rem 0;
+    color: gray;
+  }
+
+  &__icon {
+    font-size: 1rem !important;
+  }
+
+  &__info {
+    margin-left: 0.625rem;
+  }
+
+  &__update-title {
+  }
+
+  &__update-form {
+  }
+
+  &__form-left {
+  }
+
+  &__form-item {
+  }
+
+  &__input {
+  }
+
+  &__form-right {
+  }
+}

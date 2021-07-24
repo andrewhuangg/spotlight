@@ -3,6 +3,7 @@ import Topbar from './Topbar';
 import Sidebar from './Sidebar';
 import Main from './Main';
 import UserList from './UserList';
+import User from './User';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -17,6 +18,9 @@ const Dashboard = () => {
         <Switch>
           <Route path={`${path}/users`}>
             <UserList />
+          </Route>
+          <Route path={`${path}/user/:userId`}>
+            <User />
           </Route>
           <Route exact path={path}>
             <Main />
