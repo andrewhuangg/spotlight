@@ -32,7 +32,7 @@ exports.deleteList = async (req, res, next) => {
   if (req.user.isAdmin) {
     try {
       await List.findByIdAndDelete(req.params.id);
-      res.status(200).json({ message: 'list deleted' });
+      return res.status(200).json({ message: 'list deleted' });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

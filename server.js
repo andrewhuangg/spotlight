@@ -1,3 +1,4 @@
+const morgan = require('morgan');
 const express = require('express');
 const dotenv = require('dotenv');
 const colors = require('colors');
@@ -19,6 +20,7 @@ const app = express();
 
 // EXPRESS MIDDLEWARE
 app.use(express.json());
+app.use(morgan('dev'));
 
 // MOUNT ROUTERS
 app.use('/api/auth', auth);
