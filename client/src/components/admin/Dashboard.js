@@ -5,6 +5,9 @@ import Main from './Main';
 import UserList from './UserList';
 import User from './User';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import NewUser from './NewUser';
+import ProductList from './ProductList';
+import Product from './Product';
 
 const Dashboard = () => {
   let { path, url } = useRouteMatch();
@@ -21,6 +24,18 @@ const Dashboard = () => {
           </Route>
           <Route path={`${path}/user/:userId`}>
             <User />
+          </Route>
+          <Route path={`${path}/create-new-user`}>
+            <NewUser />
+          </Route>
+          <Route path={`${path}/products`}>
+            <ProductList />
+          </Route>
+          <Route path={`${path}/product/:productId`}>
+            <Product />
+          </Route>
+          <Route path={`${path}/add-new-product`}>
+            <NewUser />
           </Route>
           <Route exact path={path}>
             <Main />

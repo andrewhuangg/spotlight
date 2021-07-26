@@ -49,6 +49,81 @@ export const userData = [
   },
 ];
 
+export const productRows = [
+  {
+    id: 1,
+    name: 'Movie 1',
+    image:
+      'https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+    stock: 456,
+    status: 'active',
+    price: '$120.00',
+  },
+  {
+    id: 2,
+    name: 'Movie 1',
+    image:
+      'https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+    stock: 456,
+    status: 'active',
+    price: '$120.00',
+  },
+  {
+    id: 3,
+    name: 'Movie 1',
+    image:
+      'https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+    stock: 456,
+    status: 'active',
+    price: '$120.00',
+  },
+  {
+    id: 4,
+    name: 'Movie 1',
+    image:
+      'https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+    stock: 456,
+    status: 'active',
+    price: '$120.00',
+  },
+  {
+    id: 5,
+    name: 'Movie 1',
+    image:
+      'https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+    stock: 456,
+    status: 'active',
+    price: '$120.00',
+  },
+  {
+    id: 6,
+    name: 'Movie 1',
+    image:
+      'https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+    stock: 456,
+    status: 'active',
+    price: '$120.00',
+  },
+  {
+    id: 7,
+    name: 'Movie 1',
+    image:
+      'https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+    stock: 456,
+    status: 'active',
+    price: '$120.00',
+  },
+  {
+    id: 8,
+    name: 'Movie 1',
+    image:
+      'https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+    stock: 456,
+    status: 'active',
+    price: '$120.00',
+  },
+];
+
 export const userRows = [
   {
     id: 1,

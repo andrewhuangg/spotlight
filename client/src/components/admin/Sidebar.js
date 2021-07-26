@@ -13,6 +13,7 @@ import {
   WorkOutline,
 } from '@material-ui/icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
@@ -39,21 +40,25 @@ const Sidebar = () => {
         <div className='sidebar__menu'>
           <h3 className='sidebar__title'>Quick Menu</h3>
           <ul className='sidebar__list'>
-            <li className='sidebar__list-item'>
-              <PermIdentity className='sidebar__icon' />
-              Home
-            </li>
-            <li className='sidebar__list-item'>
-              <Storefront className='sidebar__icon' />
-              Analytics
-            </li>
+            <Link to='/admin/users' className='sidebar__icon-link'>
+              <li className='sidebar__list-item'>
+                <PermIdentity className='sidebar__icon' />
+                Users
+              </li>
+            </Link>
+            <Link to='/admin/products' className='sidebar__icon-link'>
+              <li className='sidebar__list-item'>
+                <Storefront className='sidebar__icon' />
+                Products
+              </li>
+            </Link>
             <li className='sidebar__list-item'>
               <AttachMoney className='sidebar__icon' />
-              Sales
+              Transactions
             </li>
             <li className='sidebar__list-item'>
               <BarChart className='sidebar__icon' />
-              Sales
+              Reports
             </li>
           </ul>
         </div>
@@ -63,15 +68,15 @@ const Sidebar = () => {
           <ul className='sidebar__list'>
             <li className='sidebar__list-item'>
               <MailOutline className='sidebar__icon' />
-              Home
+              Mail
             </li>
             <li className='sidebar__list-item'>
               <DynamicFeed className='sidebar__icon' />
-              Analytics
+              Feedback
             </li>
             <li className='sidebar__list-item'>
               <ChatBubbleOutline className='sidebar__icon' />
-              Sales
+              Messages
             </li>
           </ul>
         </div>
@@ -81,7 +86,7 @@ const Sidebar = () => {
           <ul className='sidebar__list'>
             <li className='sidebar__list-item'>
               <WorkOutline className='sidebar__icon' />
-              Home
+              Manage
             </li>
             <li className='sidebar__list-item'>
               <Timeline className='sidebar__icon' />
@@ -89,7 +94,7 @@ const Sidebar = () => {
             </li>
             <li className='sidebar__list-item'>
               <Report className='sidebar__icon' />
-              Sales
+              Reports
             </li>
           </ul>
         </div>

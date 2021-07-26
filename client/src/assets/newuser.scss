@@ -1,0 +1,62 @@
+.newuser {
+  flex: 4;
+
+  &__title {
+  }
+
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: 25rem;
+    margin-top: 0.625rem;
+    margin-right: 1.25rem;
+    display: flex;
+    flex-flow: column nowrap;
+
+    label {
+      margin-bottom: 0.625rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: gray;
+    }
+
+    input {
+      height: 1.25rem;
+      padding: 0.625rem;
+      border: 1px solid gray;
+      border-radius: 0.3125rem;
+    }
+  }
+
+  &__gender {
+    input {
+      margin: 0.9375rem;
+      font-size: 1.125rem;
+      color: gray;
+    }
+  }
+
+  &__select {
+    height: 2.5rem;
+    border-radius: 0.3125rem;
+  }
+
+  &__create-btn {
+    width: 12.5rem;
+    padding: 0.4375rem 0.625rem;
+    margin-top: 1.875rem;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.625rem;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
