@@ -1,3 +1,18 @@
+export const productData = [
+  {
+    name: 'Jan',
+    Sales: 4000,
+  },
+  {
+    name: 'Feb',
+    Sales: 5000,
+  },
+  {
+    name: 'Mar',
+    Sales: 2000,
+  },
+];
+
 export const userData = [
   {
     name: 'Jan',
