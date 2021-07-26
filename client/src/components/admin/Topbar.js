@@ -1,12 +1,15 @@
 import { Language, NotificationsNone, Settings } from '@material-ui/icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Topbar = () => {
   return (
     <div className='topbar'>
       <div className='topbar__wrapper'>
         <div className='topbar__left'>
-          <span className='topbar__logo'>spotlightadmin</span>
+          <Link to='/admin'>
+            <span className='topbar__logo'>spotlightadmin</span>
+          </Link>
         </div>
         <div className='topbar__right'>
           <div className='topbar__icons-container'>

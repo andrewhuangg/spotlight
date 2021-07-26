@@ -8,6 +8,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import NewUser from './NewUser';
 import ProductList from './ProductList';
 import Product from './Product';
+import NewProduct from './NewProduct';
 
 const Dashboard = () => {
   let { path, url } = useRouteMatch();
@@ -35,7 +36,7 @@ const Dashboard = () => {
             <Product />
           </Route>
           <Route path={`${path}/add-new-product`}>
-            <NewUser />
+            <NewProduct />
           </Route>
           <Route exact path={path}>
             <Main />
