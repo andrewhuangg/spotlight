@@ -4,15 +4,19 @@ import {
   MailOutline,
   PermIdentity,
   PhoneIphone,
+  Publish,
 } from '@material-ui/icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const User = () => {
   return (
     <div className='user'>
       <div className='user__title-container'>
         <h1 className='user__title'>Edit User</h1>
-        <button className='user__add-btn'>Create</button>
+        <Link to='/admin/create-new-user'>
+          <button className='user__add-btn'>Create</button>
+        </Link>
       </div>
 
       <div className='user__container'>
@@ -61,10 +65,39 @@ const User = () => {
             <div className='user__form-left'>
               <div className='user__form-item'>
                 <label>Username</label>
-                <input type='text' placeholder='username' className='user__input' />
+                <input type='text' placeholder='lebronjames99' className='user__input' />
+              </div>
+              <div className='user__form-item'>
+                <label>Full Name</label>
+                <input type='text' placeholder='John Owens' className='user__input' />
+              </div>
+              <div className='user__form-item'>
+                <label>Email</label>
+                <input type='text' placeholder='lebronjames99@gmail.com' className='user__input' />
+              </div>
+              <div className='user__form-item'>
+                <label>Phone number</label>
+                <input type='text' placeholder='+1 123 456 78' className='user__input' />
+              </div>
+              <div className='user__form-item'>
+                <label>Address</label>
+                <input type='text' placeholder='California | USA' className='user__input' />
               </div>
             </div>
-            <div className='user__form-right'></div>
+            <div className='user__form-right'>
+              <div className='user__update-upload'>
+                <img
+                  className='user__update-image'
+                  src='https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+                  alt=''
+                />
+                <label htmlFor='file'>
+                  <Publish className='user__update-icon' />
+                </label>
+                <input type='file' id='file' style={{ display: 'none' }} />
+              </div>
+              <button className='user__update-btn'>update</button>
+            </div>
           </form>
         </div>
       </div>
