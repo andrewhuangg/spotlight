@@ -6,8 +6,8 @@ import {
   LineStyle,
   MailOutline,
   PermIdentity,
+  PlayCircleOutline,
   Report,
-  Storefront,
   Timeline,
   TrendingUp,
   WorkOutline,
@@ -48,10 +48,10 @@ const Sidebar = () => {
                 Users
               </li>
             </Link>
-            <Link to='/admin/products' className='sidebar__icon-link'>
+            <Link to='/admin/movies' className='sidebar__icon-link'>
               <li className='sidebar__list-item'>
-                <Storefront className='sidebar__icon' />
-                Products
+                <PlayCircleOutline className='sidebar__icon' />
+                Movies
               </li>
             </Link>
             <li className='sidebar__list-item'>

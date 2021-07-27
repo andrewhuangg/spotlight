@@ -75,7 +75,7 @@ exports.getUsers = async (req, res, next) => {
   try {
     const query = req.query.new;
     if (req.user.isAdmin) {
-      const users = query ? await User.find().sort({ _id: -1 }).limit(10) : await User.find();
+      const users = query ? await User.find().sort({ _id: -1 }).limit(5) : await User.find();
       return res.status(200).json(users);
     } else {
       res.status(403).json({ error: 'you are not authorized to see new users' });

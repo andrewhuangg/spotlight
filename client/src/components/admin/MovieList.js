@@ -4,7 +4,7 @@ import { productRows } from '../../dummyData';
 import { DeleteOutline } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
-const ProductList = () => {
+const MovieList = () => {
   const [data, setData] = useState(productRows);
 
   const handleDelete = (id) => {
@@ -14,13 +14,13 @@ const ProductList = () => {
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     {
-      field: 'product',
-      headerName: 'Product',
+      field: 'movie',
+      headerName: 'Movie',
       width: 200,
       renderCell: (params) => {
         return (
-          <div className='productlist__item'>
-            <img src={params.row.image} alt='' className='productlist__image' />
+          <div className='movielist__item'>
+            <img src={params.row.image} alt='' className='movielist__image' />
             {params.row.name}
           </div>
         );
@@ -44,11 +44,11 @@ const ProductList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/admin/product/${params.row.id}`}>
-              <button className='productlist__edit-btn'>Edit</button>
+            <Link to={`/admin/movie/${params.row.id}`}>
+              <button className='movielist__edit-btn'>Edit</button>
             </Link>
             <DeleteOutline
-              className='productlist__delete-btn'
+              className='movielist__delete-btn'
               onClick={() => handleDelete(params.row.id)}
             />
           </>
@@ -58,7 +58,7 @@ const ProductList = () => {
   ];
 
   return (
-    <div className='productlist'>
+    <div className='movielist'>
       <DataGrid
         rows={data}
         columns={columns}
@@ -70,4 +70,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default MovieList;

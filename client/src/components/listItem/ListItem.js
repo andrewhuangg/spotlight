@@ -13,7 +13,7 @@ const ListItem = ({ index, item }) => {
   const fetchMovie = useCallback(
     async (item) => {
       try {
-        const { data } = await axios.get('movies/' + item, {
+        const { data } = await axios.get('/movies/' + item, {
           headers: {
             token:
               'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjYwODJkN2VmY2M4MGRiMjJiNzM4MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNjk5ODUyOSwiZXhwIjoxNjI3MDg0OTI5fQ.m4kjuUf8EF__EH05dIysh8Kb--6-Rqr6vAj7xDnBfws',

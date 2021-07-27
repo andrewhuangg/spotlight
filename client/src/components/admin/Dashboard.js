@@ -1,48 +1,57 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/authContext/AuthContext';
 import Topbar from './Topbar';
 import Sidebar from './Sidebar';
 import Main from './Main';
 import UserList from './UserList';
 import User from './User';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import NewUser from './NewUser';
-import ProductList from './ProductList';
-import Product from './Product';
-import NewProduct from './NewProduct';
+import MovieList from './MovieList';
+import Movie from './Movie';
+import NewMovie from './NewMovie';
+import AdminLogin from './AdminLogin';
 
 const Dashboard = () => {
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
+  const { user } = useContext(AuthContext);
 
   return (
     <div className='dashboard'>
-      <Topbar />
-      <div className='dashboard__container'>
-        <Sidebar />
+      <Switch>
+        <Route path={`${path}/login`}>{user ? <Redirect to='/admin' /> : <AdminLogin />}</Route>
+        {/* redirect to home page if there is a user */}
+        {user && (
+          <>
+            <Topbar />
+            <div className='dashboard__container'>
+              <Sidebar />
 
-        <Switch>
-          <Route path={`${path}/users`}>
-            <UserList />
-          </Route>
-          <Route path={`${path}/user/:userId`}>
-            <User />
-          </Route>
-          <Route path={`${path}/create-new-user`}>
-            <NewUser />
-          </Route>
-          <Route path={`${path}/products`}>
-            <ProductList />
-          </Route>
-          <Route path={`${path}/product/:productId`}>
-            <Product />
-          </Route>
-          <Route path={`${path}/add-new-product`}>
-            <NewProduct />
-          </Route>
-          <Route exact path={path}>
-            <Main />
-          </Route>
-        </Switch>
-      </div>
+              <Route path={`${path}/users`}>
+                <UserList />
+              </Route>
+              <Route path={`${path}/user/:userId`}>
+                <User />
+              </Route>
+              <Route path={`${path}/create-new-user`}>
+                <NewUser />
+              </Route>
+              <Route path={`${path}/movies`}>
+                <MovieList />
+              </Route>
+              <Route path={`${path}/movie/:movieId`}>
+                <Movie />
+              </Route>
+              <Route path={`${path}/add-new-movie`}>
+                <NewMovie />
+              </Route>
+              <Route exact path={path}>
+                <Main />
+              </Route>
+            </div>
+          </>
+        )}
+      </Switch>
     </div>
   );
 };

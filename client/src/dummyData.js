@@ -1,4 +1,4 @@
-export const productData = [
+export const movieData = [
   {
     name: 'Jan',
     Sales: 4000,

@@ -9,7 +9,7 @@ const Featured = ({ type }) => {
   const fetchRandomMovie = useCallback(
     async (type) => {
       try {
-        const { data } = await axios.get(`movies/random?type=${type}`, {
+        const { data } = await axios.get(`/movies/random?type=${type}`, {
           headers: {
             token:
               'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjYwODJkN2VmY2M4MGRiMjJiNzM4MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNjk5ODUyOSwiZXhwIjoxNjI3MDg0OTI5fQ.m4kjuUf8EF__EH05dIysh8Kb--6-Rqr6vAj7xDnBfws',

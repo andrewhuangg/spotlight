@@ -13,7 +13,7 @@ const Home = ({ type }) => {
     async (type, genre) => {
       try {
         const { data } = await axios.get(
-          `lists${type ? '?type=' + type : ''}${genre ? '&genre=' + genre : ''}`,
+          `/lists${type ? '?type=' + type : ''}${genre ? '&genre=' + genre : ''}`,
           {
             headers: {
               token:
