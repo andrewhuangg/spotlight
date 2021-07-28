@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-import { productRows } from '../../dummyData';
 import { DeleteOutline } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import { MovieContext } from '../context/movieContext/MovieContext';
+import { deleteMovie, getMovies } from '../context/movieContext/MovieApi';
 
 const MovieList = () => {
-  const [data, setData] = useState(productRows);
+  const { movies, dispatch } = useContext(MovieContext);
+
+  useEffect(() => {
+    getMovies(dispatch);
+  }, [dispatch]);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    deleteMovie(id, dispatch);
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
+    { field: '_id', headerName: 'ID', width: 90 },
     {
       field: 'movie',
       headerName: 'Movie',
@@ -20,23 +25,16 @@ const MovieList = () => {
       renderCell: (params) => {
         return (
           <div className='movielist__item'>
-            <img src={params.row.image} alt='' className='movielist__image' />
-            {params.row.name}
+            <img src={params.row.imageHero} alt='' className='movielist__image' />
+            {params.row.title}
           </div>
         );
       },
     },
-    { field: 'stock', headerName: 'Stock', width: 130 },
-    {
-      field: 'status',
-      headerName: 'Status',
-      width: 120,
-    },
-    {
-      field: 'price',
-      headerName: 'Price',
-      width: 160,
-    },
+    { field: 'genre', headerName: 'Genre', width: 120 },
+    { field: 'isSeries', headerName: 'isSeries', width: 120 },
+    { field: 'year', headerName: 'Year', width: 120 },
+    { field: 'limit', headerName: 'Limit', width: 120 },
     {
       field: 'action',
       headerName: 'Action',
@@ -44,12 +42,12 @@ const MovieList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/admin/movie/${params.row.id}`}>
+            <Link to={`/admin/movie/${params.row._id}`}>
               <button className='movielist__edit-btn'>Edit</button>
             </Link>
             <DeleteOutline
               className='movielist__delete-btn'
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -60,11 +58,12 @@ const MovieList = () => {
   return (
     <div className='movielist'>
       <DataGrid
-        rows={data}
+        rows={movies}
         columns={columns}
         pageSize={8}
         checkboxSelection
         disableSelectionOnClick
+        getRowId={(r) => r._id}
       />
     </div>
   );

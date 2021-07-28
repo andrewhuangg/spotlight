@@ -14,9 +14,6 @@ const Movie = () => {
         </Link>
       </div>
       <div className='movie__top'>
-        <div className='movie__left'>
-          <Chart data={movieData} dataKey='Sales' title='Sales Performance' />
-        </div>
         <div className='movie__right'>
           <div className='movie__info-top'>
             <img
@@ -69,8 +66,8 @@ const Movie = () => {
                 src='https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
                 alt=''
               />
-              <label for='file'>
-                <Publish />
+              <label htmlFor='file'>
+                <Publish className='movie__upload-btn' />
               </label>
               <input type='file' id='file' style={{ display: 'none' }} />
             </div>
