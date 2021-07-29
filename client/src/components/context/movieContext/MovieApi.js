@@ -9,6 +9,9 @@ import {
   createMoviesStart,
   createMoviesSuccess,
   createMoviesFailure,
+  updateMoviesStart,
+  updateMoviesSuccess,
+  updateMoviesFailure,
 } from './MovieActions';
 
 export const getMovies = async (dispatch) => {
@@ -36,6 +39,20 @@ export const createMovie = async (movie, dispatch) => {
     dispatch(createMoviesSuccess(data));
   } catch (error) {
     dispatch(createMoviesFailure());
+  }
+};
+
+export const updateMovie = async (id, movie, dispatch) => {
+  dispatch(updateMoviesStart());
+  try {
+    const { data } = await axios.put(`/movies/${id}`, movie, {
+      headers: {
+        token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).signedToken,
+      },
+    });
+    dispatch(updateMoviesSuccess(data));
+  } catch (error) {
+    dispatch(updateMoviesFailure());
   }
 };
 

@@ -4,6 +4,9 @@ export const MOVIE_FAILURE = 'MOVIE_FAILURE';
 export const CREATE_MOVIE_START = 'CREATE_MOVIE_START';
 export const CREATE_MOVIE_SUCCESS = 'CREATE_MOVIE_SUCCESS';
 export const CREATE_MOVIE_FAILURE = 'CREATE_MOVIE_FAILURE';
+export const UPDATE_MOVIE_START = 'UPDATE_MOVIE_START';
+export const UPDATE_MOVIE_SUCCESS = 'UPDATE_MOVIE_SUCCESS';
+export const UPDATE_MOVIE_FAILURE = 'UPDATE_MOVIE_FAILURE';
 export const DELETE_MOVIE_START = 'DELETE_MOVIE_START';
 export const DELETE_MOVIE_SUCCESS = 'DELETE_MOVIE_SUCCESS';
 export const DELETE_MOVIE_FAILURE = 'DELETE_MOVIE_FAILURE';
@@ -32,6 +35,19 @@ export const createMoviesSuccess = (movie) => ({
 
 export const createMoviesFailure = () => ({
   type: CREATE_MOVIE_FAILURE,
+});
+
+export const updateMoviesStart = () => ({
+  type: UPDATE_MOVIE_START,
+});
+
+export const updateMoviesSuccess = (movie) => ({
+  type: UPDATE_MOVIE_SUCCESS,
+  payload: movie,
+});
+
+export const updateMoviesFailure = () => ({
+  type: UPDATE_MOVIE_FAILURE,
 });
 
 export const deleteMovieStart = () => ({
