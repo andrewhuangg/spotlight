@@ -13,7 +13,7 @@ import {
   DELETE_MOVIE_FAILURE,
 } from './MovieActions';
 
-export const movieReducer = (state, action) => {
+const movieReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {

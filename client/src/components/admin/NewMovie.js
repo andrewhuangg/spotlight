@@ -59,8 +59,6 @@ const NewMovie = () => {
     createMovie(movie, dispatch);
   };
 
-  console.log(movie);
-
   return (
     <div className='newmovie'>
       <h1 className='newmovie__title'>New Movie</h1>

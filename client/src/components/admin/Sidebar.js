@@ -1,9 +1,9 @@
 import {
-  AttachMoney,
   BarChart,
   ChatBubbleOutline,
   DynamicFeed,
   LineStyle,
+  List,
   MailOutline,
   PermIdentity,
   PlayCircleOutline,
@@ -54,10 +54,12 @@ const Sidebar = () => {
                 Movies
               </li>
             </Link>
-            <li className='sidebar__list-item'>
-              <AttachMoney className='sidebar__icon' />
-              Transactions
-            </li>
+            <Link to='/admin/lists' className='sidebar__icon-link'>
+              <li className='sidebar__list-item'>
+                <List className='sidebar__icon' />
+                Lists
+              </li>
+            </Link>
             <li className='sidebar__list-item'>
               <BarChart className='sidebar__icon' />
               Reports

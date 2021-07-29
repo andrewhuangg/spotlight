@@ -11,6 +11,9 @@ import MovieList from './MovieList';
 import Movie from './Movie';
 import NewMovie from './NewMovie';
 import AdminLogin from './AdminLogin';
+import AdminLists from './AdminLists';
+import AdminList from './AdminList';
+import AdminNewList from './AdminNewList';
 
 const Dashboard = () => {
   let { path } = useRouteMatch();
@@ -44,6 +47,15 @@ const Dashboard = () => {
               </Route>
               <Route path={`${path}/add-new-movie`}>
                 <NewMovie />
+              </Route>
+              <Route path={`${path}/lists`}>
+                <AdminLists />
+              </Route>
+              <Route path={`${path}/list/:listId`}>
+                <AdminList />
+              </Route>
+              <Route path={`${path}/add-new-list`}>
+                <AdminNewList />
               </Route>
               <Route exact path={path}>
                 <Main />
