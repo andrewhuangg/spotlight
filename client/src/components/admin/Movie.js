@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Chart from './Chart';
 import { movieData } from '../../dummyData';
 import { Publish } from '@material-ui/icons';
 
 const Movie = () => {
+  const location = useLocation();
+  const movie = location.movie;
+
   return (
     <div className='movie'>
       <div className='movie__header'>
@@ -16,29 +19,25 @@ const Movie = () => {
       <div className='movie__top'>
         <div className='movie__right'>
           <div className='movie__info-top'>
-            <img
-              className='movie__info-image'
-              src='https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
-              alt=''
-            />
-            <span className='movie__name'>Movie</span>
+            <img className='movie__info-image' src={movie.imageHero} alt='' />
+            <span className='movie__name'>{movie.title}</span>
           </div>
           <div className='movie__info-bottom'>
             <div className='movie__item'>
               <span className='movie__key'>id:</span>
-              <span className='movie__value'>123</span>
+              <span className='movie__value'>{movie._id}</span>
             </div>
             <div className='movie__item'>
-              <span className='movie__key'>sales:</span>
-              <span className='movie__value'>123</span>
+              <span className='movie__key'>genre:</span>
+              <span className='movie__value'>{movie.genre}</span>
             </div>
             <div className='movie__item'>
-              <span className='movie__key'>active:</span>
-              <span className='movie__value'>yes</span>
+              <span className='movie__key'>year:</span>
+              <span className='movie__value'>{movie.year}</span>
             </div>
             <div className='movie__item'>
-              <span className='movie__key'>in stock:</span>
-              <span className='movie__value'>no</span>
+              <span className='movie__key'>limit:</span>
+              <span className='movie__value'>{movie.limit}</span>
             </div>
           </div>
         </div>
@@ -46,26 +45,22 @@ const Movie = () => {
       <div className='movie__bottom'>
         <form className='movie__form'>
           <div className='movie__form-left'>
-            <label>Movie Name</label>
-            <input type='text' placeholder='movie' />
-            <label>In Stock</label>
-            <select name='inStock' id='idStock'>
-              <option value='yes'>Yes</option>
-              <option value='no'>No</option>
-            </select>
-            <label>Active</label>
-            <select name='active' id='idActive'>
-              <option value='yes'>Yes</option>
-              <option value='no'>No</option>
-            </select>
+            <label>Movie Title</label>
+            <input type='text' placeholder={movie.title} />
+            <label>Year</label>
+            <input type='text' palceholder={movie.year} />
+            <label>Genre</label>
+            <input type='text' palceholder={movie.genre} />
+            <label>Limit</label>
+            <input type='text' palceholder={movie.limit} />
+            <label>Trailer</label>
+            <input type='file' palceholder={movie.trailer} />
+            <label>Video</label>
+            <input type='file' palceholder={movie.video} />
           </div>
           <div className='movie__form-right'>
             <div className='movie__upload'>
-              <img
-                className='movie__upload-image'
-                src='https://images.unsplash.com/photo-1549820610-ec7475b33969?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
-                alt=''
-              />
+              <img className='movie__upload-image' src={movie.imageHero} alt='' />
               <label htmlFor='file'>
                 <Publish className='movie__upload-btn' />
               </label>

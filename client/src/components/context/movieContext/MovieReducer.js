@@ -2,9 +2,12 @@ import {
   MOVIE_START,
   MOVIE_SUCCESS,
   MOVIE_FAILURE,
-  DELETE_MOVIE_FAILURE,
+  CREATE_MOVIE_START,
+  CREATE_MOVIE_SUCCESS,
+  CREATE_MOVIE_FAILURE,
   DELETE_MOVIE_START,
   DELETE_MOVIE_SUCCESS,
+  DELETE_MOVIE_FAILURE,
 } from './MovieActions';
 
 export const movieReducer = (state, action) => {
@@ -28,6 +31,27 @@ export const movieReducer = (state, action) => {
     case MOVIE_FAILURE:
       return {
         movies: [],
+        isFetching: false,
+        error: true,
+      };
+
+    case CREATE_MOVIE_START:
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+
+    case CREATE_MOVIE_SUCCESS:
+      return {
+        movies: [...state.movies, payload],
+        isFetching: false,
+        error: false,
+      };
+
+    case CREATE_MOVIE_FAILURE:
+      return {
+        ...state,
         isFetching: false,
         error: true,
       };

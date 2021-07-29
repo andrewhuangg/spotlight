@@ -42,7 +42,7 @@ const MovieList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/admin/movie/${params.row._id}`}>
+            <Link to={{ pathname: `/admin/movie/${params.row._id}`, movie: params.row }}>
               <button className='movielist__edit-btn'>Edit</button>
             </Link>
             <DeleteOutline
