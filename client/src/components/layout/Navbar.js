@@ -1,10 +1,13 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useContext } from 'react';
 import { Search, Notifications, ArrowDropDown, AccountCircle } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/authContext/AuthContext';
+import { logout } from '../context/authContext/AuthActions';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const mountedRef = useRef(true);
+  const { dispatch } = useContext(AuthContext);
 
   const windowScroll = useCallback(
     (window.onscroll = () => {
@@ -53,7 +56,7 @@ const Navbar = () => {
             <ArrowDropDown className='navbar__icon' />
             <div className='navbar__options' id='options'>
               <span>Settings</span>
-              <span>Logout</span>
+              <span onClick={() => dispatch(logout())}>Logout</span>
             </div>
           </div>
         </div>

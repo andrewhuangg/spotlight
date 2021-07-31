@@ -3,7 +3,7 @@
   top: 0;
   width: 100%;
   font-size: 0.875rem;
-  z-index: 999;
+  z-index: 5;
   color: white;
   background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
   transition: background-color 0.5s ease-in-out;
@@ -38,6 +38,10 @@
     span {
       margin-right: 1.25rem;
       cursor: pointer;
+    }
+
+    @include tablet {
+      display: none;
     }
   }
 

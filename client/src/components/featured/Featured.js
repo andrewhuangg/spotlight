@@ -1,42 +1,33 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PlayArrow, InfoOutlined } from '@material-ui/icons';
 import axios from 'axios';
 
-const Featured = ({ type }) => {
+const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState({});
-  const mountedRef = useRef(true);
 
-  const fetchRandomMovie = useCallback(
-    async (type) => {
+  useEffect(() => {
+    const fetchRandomMovie = async () => {
       try {
         const { data } = await axios.get(`/movies/random?type=${type}`, {
           headers: {
-            token:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjYwODJkN2VmY2M4MGRiMjJiNzM4MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNjk5ODUyOSwiZXhwIjoxNjI3MDg0OTI5fQ.m4kjuUf8EF__EH05dIysh8Kb--6-Rqr6vAj7xDnBfws',
+            token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).signedToken,
           },
         });
-        if (!mountedRef.current) return null;
-        if (mountedRef.current) setContent(data[0]);
+
+        setContent(data[0]);
       } catch (error) {
         console.log(error);
       }
-    },
-    [mountedRef]
-  );
-
-  useEffect(() => {
-    fetchRandomMovie(type);
-    return () => {
-      mountedRef.current = false;
     };
-  }, [type, fetchRandomMovie]);
+    fetchRandomMovie();
+  }, [type]);
 
   return (
-    <div className='featured' ref={mountedRef}>
+    <div className='featured'>
       {type && (
         <div className='featured__category'>
           <span>{type === 'movies' ? 'Movies' : 'Series'}</span>
-          <select name='genre' id='genre'>
+          <select name='genre' id='genre' onChange={(e) => setGenre(e.target.value)}>
             <option>Genre</option>
             <option value='adventure'>Adventure</option>
             <option value='comedy'>Comedy</option>

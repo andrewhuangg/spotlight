@@ -1,6 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { userLoginApi } from '../context/authContext/AuthApi';
+import { AuthContext } from '../context/authContext/AuthContext';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { dispatch } = useContext(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    userLoginApi({ email, password }, dispatch);
+  };
+
   return (
     <div className='login'>
       <div className='login__top'>
@@ -15,9 +26,21 @@ const Login = () => {
       <div className='login__container'>
         <form className='login__form'>
           <h1>Sign In</h1>
-          <input type='email' placeholder='Email or phone number' className='login__input' />
-          <input type='password' placeholder='password' className='login__input' />
-          <button className='login__login-btn'>Sign In</button>
+          <input
+            type='email'
+            placeholder='Email or phone number'
+            className='login__input'
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type='password'
+            placeholder='password'
+            className='login__input'
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className='login__login-btn' onClick={handleLogin}>
+            Sign In
+          </button>
           <span>
             New to Netflix? <b>Sign up now.</b>
           </span>

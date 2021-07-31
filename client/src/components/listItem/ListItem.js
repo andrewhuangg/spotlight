@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Add, PlayArrow, ThumbDownAltOutlined, ThumbUpAltOutlined } from '@material-ui/icons';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -8,32 +8,22 @@ const ListItem = ({ index, item }) => {
   // get size of item pre and post hover, center and divide it..., and subtract remaining width from pre hover
   // account for list position as well
   const [movie, setMovie] = useState({});
-  const mountedRef = useRef(true);
 
-  const fetchMovie = useCallback(
-    async (item) => {
+  useEffect(() => {
+    const fetchMovie = async () => {
       try {
         const { data } = await axios.get('/movies/' + item, {
           headers: {
-            token:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjYwODJkN2VmY2M4MGRiMjJiNzM4MSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNjk5ODUyOSwiZXhwIjoxNjI3MDg0OTI5fQ.m4kjuUf8EF__EH05dIysh8Kb--6-Rqr6vAj7xDnBfws',
+            token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).signedToken,
           },
         });
-        if (!mountedRef.current) return null;
-        if (mountedRef.current) setMovie(data);
+        setMovie(data);
       } catch (error) {
         console.log(error);
       }
-    },
-    [mountedRef]
-  );
-
-  useEffect(() => {
-    fetchMovie(item);
-    return () => {
-      mountedRef.current = false;
     };
-  }, [item, fetchMovie]);
+    fetchMovie();
+  }, [item]);
 
   return (
     <Link to={{ pathname: '/watch', movie: movie }}>
@@ -42,7 +32,6 @@ const ListItem = ({ index, item }) => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{ left: isHovered && index * 225 + index * 2.5 }}
-        ref={mountedRef}
       >
         <img src={movie.imagePin} alt='' />
 

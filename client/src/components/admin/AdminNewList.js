@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import storage from '../../firebase';
-import { createMovie, getMovies } from '../context/movieContext/MovieApi';
+import { getMovies } from '../context/movieContext/MovieApi';
 import { ListContext } from '../context/listContext/ListContext';
 import { MovieContext } from '../context/movieContext/MovieContext';
+import { createList } from '../context/listContext/ListApi';
+import { useHistory } from 'react-router-dom';
 
 const AdminNewList = () => {
+  const history = useHistory();
   const [list, setList] = useState(null);
-
   const { dispatch } = useContext(ListContext);
   const { movies, dispatch: dispatchMovie } = useContext(MovieContext);
 
@@ -24,24 +26,34 @@ const AdminNewList = () => {
     setList({ ...list, [e.target.name]: values });
   };
 
-  console.log(list);
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    createList(list, dispatch);
+    history.push('/admin/lists');
   };
 
   return (
     <div className='newlist'>
-      <h1 className='newlist__title'>New Movie</h1>
+      <h1 className='newlist__title'>New List</h1>
       <form className='newlist__form'>
         <div className='newlist__form-left'>
           <div className='newlist__item'>
             <label>Title</label>
-            <input type='text' placeholder='Title' name='title' onChange={(e) => handleChange(e)} />
+            <input
+              type='text'
+              placeholder='Popular Movies'
+              name='title'
+              onChange={(e) => handleChange(e)}
+            />
           </div>
           <div className='newlist__item'>
             <label>Genre</label>
-            <input type='text' placeholder='Genre' name='genre' onChange={(e) => handleChange(e)} />
+            <input
+              type='text'
+              placeholder='Action'
+              name='genre'
+              onChange={(e) => handleChange(e)}
+            />
           </div>
           <div className='newlist__item'>
             <label>Type</label>

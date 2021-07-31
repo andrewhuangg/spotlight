@@ -10,3 +10,13 @@ export const adminLoginApi = async (user, dispatch) => {
     dispatch(loginFailure());
   }
 };
+
+export const userLoginApi = async (user, dispatch) => {
+  dispatch(loginStart());
+  try {
+    const { data } = await axios.post('/auth/login', user);
+    dispatch(loginSuccess(data));
+  } catch (error) {
+    dispatch(loginFailure());
+  }
+};
