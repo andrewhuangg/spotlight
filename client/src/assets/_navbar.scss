@@ -38,10 +38,10 @@
     span {
       margin-right: 1.25rem;
       cursor: pointer;
-    }
 
-    @include tablet {
-      display: none;
+      @include tablet {
+        display: none;
+      }
     }
   }
 
@@ -81,5 +81,10 @@
     display: none;
     background-color: $main;
     border-radius: 0.3125rem;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
 }

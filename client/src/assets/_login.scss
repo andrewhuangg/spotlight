@@ -14,7 +14,8 @@
   }
 
   &__logo {
-    height: 2.5rem;
+    height: 3.5rem;
+    z-index: 1;
   }
 
   &__container {
@@ -28,6 +29,17 @@
     align-items: center;
     justify-content: center;
     color: white;
+
+    small {
+      a {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+          font-size: 0.9rem;
+        }
+      }
+    }
   }
 
   &__form {

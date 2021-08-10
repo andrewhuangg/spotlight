@@ -19,7 +19,7 @@ const Home = ({ type }) => {
             },
           }
         );
-        setLists(data);
+        if (data) setLists(data);
       } catch (error) {
         console.log(error);
       }

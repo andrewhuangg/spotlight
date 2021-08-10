@@ -33,7 +33,7 @@ const Register = () => {
         <div className='register__wrapper'>
           <img
             className='register__logo'
-            src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png'
+            src='https://ps.w.org/spotlight-social-photo-feeds/assets/icon-256x256.png?rev=2510613'
             alt=''
           />
           <button className='register__login-btn' onClick={() => history.push('/login')}>

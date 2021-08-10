@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { userLoginApi } from '../context/authContext/AuthApi';
 import { AuthContext } from '../context/authContext/AuthContext';
 
@@ -18,7 +19,7 @@ const Login = () => {
         <div className='login__wrapper'>
           <img
             className='login__logo'
-            src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png'
+            src='https://ps.w.org/spotlight-social-photo-feeds/assets/icon-256x256.png?rev=2510613'
             alt=''
           />
         </div>
@@ -42,11 +43,13 @@ const Login = () => {
             Sign In
           </button>
           <span>
-            New to Netflix? <b>Sign up now.</b>
+            New to Spotlight?{' '}
+            <Link to='/register/'>
+              <b>Sign up now.</b>
+            </Link>
           </span>
           <small>
-            This page is protected by Google reCAPTCHA to ensure you're not a bot. <b>Learn more</b>
-            .
+            <Link to='/admin/login'>Admin Login</Link>
           </small>
         </form>
       </div>

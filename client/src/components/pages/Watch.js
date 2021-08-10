@@ -1,14 +1,19 @@
 import { ArrowBackOutlined } from '@material-ui/icons';
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Watch = () => {
   const location = useLocation();
   const movie = location.movie;
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
 
   return (
     <div className='watch'>
-      <div className='watch__back-btn'>
+      <div className='watch__back-btn' onClick={() => goBack()}>
         <ArrowBackOutlined />
         Home
       </div>

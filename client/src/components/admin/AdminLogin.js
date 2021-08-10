@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { adminLoginApi } from '../context/authContext/AuthApi';
 import { AuthContext } from '../context/authContext/AuthContext';
 
@@ -14,6 +15,7 @@ const AdminLogin = () => {
 
   return (
     <div className='adminlogin'>
+      <h1>Admin</h1>
       <form className='adminlogin__form'>
         <input
           className='adminlogin__input'
@@ -31,6 +33,7 @@ const AdminLogin = () => {
           Login
         </button>
       </form>
+      <Link to='/'>back to user login</Link>
     </div>
   );
 };

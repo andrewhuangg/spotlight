@@ -24,7 +24,7 @@
   &__logo {
     font-weight: bold;
     font-size: 1.875rem;
-    color: darkblue;
+    color: $darkTurquoise;
     cursor: pointer;
   }
 
@@ -55,5 +55,40 @@
     height: 2.5rem;
     border-radius: 50%;
     cursor: pointer;
+  }
+
+  &__dropdown {
+    span {
+      padding: 0.625rem;
+      cursor: pointer;
+    }
+    &:hover {
+      #options {
+        position: absolute;
+        display: flex;
+        flex-flow: column nowrap;
+      }
+    }
+  }
+
+  &__options {
+    margin-right: 6rem;
+    padding: 1rem;
+    right: -5rem;
+    display: none;
+    background-color: hsl(240, 100%, 99%);
+    border-radius: 0.3125rem;
+    color: lightgray;
+
+    a {
+      text-decoration: none;
+      color: lightgray;
+      padding: 0.5rem;
+
+      &:hover,
+      &:active {
+        background-color: hsl(240, 69%, 94%);
+      }
+    }
   }
 }

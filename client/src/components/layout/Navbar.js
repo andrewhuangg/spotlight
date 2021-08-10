@@ -30,7 +30,7 @@ const Navbar = () => {
         <div className='navbar__left'>
           <Link to='/' className='navbar__link'>
             <img
-              src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png'
+              src='https://ps.w.org/spotlight-social-photo-feeds/assets/icon-256x256.png?rev=2510613'
               alt=''
             />
           </Link>
@@ -43,20 +43,19 @@ const Navbar = () => {
           <Link to='/movies' className='navbar__link'>
             <span>Movies</span>
           </Link>
-          <span>New and Popular</span>
-          <span>My List</span>
         </div>
         <div className='navbar__right'>
-          <Search className='navbar__icon' />
-          <span>KID</span>
-          <Notifications className='navbar__icon' />
           <AccountCircle />
           {/* replace account circle <image src='profile picture' alt='' /> */}
           <div className='navbar__profile'>
             <ArrowDropDown className='navbar__icon' />
             <div className='navbar__options' id='options'>
-              <span>Settings</span>
-              <span onClick={() => dispatch(logout())}>Logout</span>
+              <Link to='/admin/login'>
+                <span>Admin</span>
+              </Link>
+              <Link to='/login'>
+                <span onClick={() => dispatch(logout())}>Logout</span>
+              </Link>
             </div>
           </div>
         </div>

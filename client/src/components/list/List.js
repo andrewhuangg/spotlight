@@ -5,6 +5,8 @@ import ListItem from '../listItem/ListItem';
 const List = ({ list, mountedRef }) => {
   const [isLeftSlide, setIsLeftSlide] = useState(false);
   const [isRightSlide, setIsRightSlide] = useState(true);
+  const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
+  // our item width size is around 230 ~~ check scss
   const [listPosition, setListPosition] = useState(0);
   // once we add api, change list position to list lengths
 
@@ -29,7 +31,7 @@ const List = ({ list, mountedRef }) => {
     if (direction === 'left' && listPosition > 0) {
       setListPosition(listPosition - 1);
       listRef.current.style.transform = `translateX(${230 + dist}px)`;
-    } else if (direction === 'right' && listPosition < 5) {
+    } else if (direction === 'right' && listPosition < 10 - clickLimit) {
       setListPosition(listPosition + 1);
       listRef.current.style.transform = `translateX(${-230 + dist}px)`;
     }

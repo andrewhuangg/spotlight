@@ -1,2 +1,0 @@
-.movielist{flex:4}.movielist__item{display:flex;align-items:center}.movielist__image{width:2rem;height:2rem;margin-right:1rem;border-radius:50%;object-fit:cover}.movielist__edit-btn{padding:0.3125rem 0.625rem;border:none;border-radius:0.625rem;background-color:#98e29a;color:white;cursor:pointer;margin-right:1.25rem}.movielist__delete-btn{color:red;cursor:pointer}
-/*# sourceMappingURL=movielist.min.css.map */
