@@ -13,19 +13,20 @@ const List = ({ list, mountedRef }) => {
   const listRef = useRef();
 
   const handleSlider = (direction) => {
+    const listLength = list.length;
+
     if (listPosition > 0) {
       setIsLeftSlide(true);
     } else if (listPosition === 0) {
       setIsLeftSlide(false);
     }
 
-    if (listPosition >= 5) {
+    if (listPosition >= listLength) {
       setIsRightSlide(false);
-    } else if (listPosition < 5) {
+    } else if (listPosition < listLength) {
       setIsRightSlide(true);
     }
 
-    // The Element.getBoundingClientRect() method returns a DOMRect object providing information about the size of an element and its position relative to the viewport.
     let dist = listRef.current.getBoundingClientRect().x - 50;
 
     if (direction === 'left' && listPosition > 0) {
@@ -42,23 +43,22 @@ const List = ({ list, mountedRef }) => {
       <span className='list__title'>{list.title}</span>
 
       <div className='list__wrapper'>
-        <ArrowBackIosOutlined
-          className='list__sliderArrow left'
-          onClick={() => handleSlider('left')}
-          style={{ display: !isLeftSlide && 'none' }}
-        />
-
         <div className='list__container' ref={listRef}>
           {list.content.map((item, i) => (
             <ListItem key={i} index={i} item={item} />
           ))}
         </div>
-        <ArrowForwardIosOutlined
-          className='list__sliderArrow right'
-          onClick={() => handleSlider('right')}
-          style={{ display: !isRightSlide && 'none' }}
-        />
       </div>
+      <ArrowBackIosOutlined
+        className='list__sliderArrow left'
+        onClick={() => handleSlider('left')}
+        style={{ display: !isLeftSlide && 'none' }}
+      />
+      <ArrowForwardIosOutlined
+        className='list__sliderArrow right'
+        onClick={() => handleSlider('right')}
+        style={{ display: !isRightSlide && 'none' }}
+      />
     </div>
   );
 };

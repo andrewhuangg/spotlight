@@ -1,6 +1,8 @@
 .listitem {
   width: 14.0625rem;
   height: 7.5rem;
+  position: absolute;
+  top: 0;
   margin-right: 0.3125rem;
   background-color: $main;
   overflow: hidden;
@@ -30,6 +32,7 @@
     -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
     box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
     border-radius: 0.3125rem;
+    z-index: 1;
 
     img {
       height: 8.75rem;

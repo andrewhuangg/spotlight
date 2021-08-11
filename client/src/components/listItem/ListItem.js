@@ -31,7 +31,7 @@ const ListItem = ({ index, item }) => {
         className='listitem'
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        style={{ left: isHovered && index * 225 + index * 2.5 }}
+        style={{ left: isHovered ? index * 225 - 50 + index * 2.5 : index * 225 + index * 5 }}
       >
         <img src={movie.imagePin} alt='' />
 
