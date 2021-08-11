@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import storage from '../../firebase';
 import { getMovies } from '../context/movieContext/MovieApi';
 import { ListContext } from '../context/listContext/ListContext';
 import { MovieContext } from '../context/movieContext/MovieContext';
