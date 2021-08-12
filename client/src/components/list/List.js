@@ -13,7 +13,7 @@ const List = ({ list }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (listSliding) setListSliding(false);
-    }, 500);
+    }, 1000);
     return () => {
       clearTimeout(timer);
     };

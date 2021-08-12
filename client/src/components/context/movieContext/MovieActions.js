@@ -1,6 +1,9 @@
 export const MOVIE_START = 'MOVIE_START';
 export const MOVIE_SUCCESS = 'MOVIE_SUCCESS';
 export const MOVIE_FAILURE = 'MOVIE_FAILURE';
+export const GET_MOVIE_START = 'GET_MOVIE_START';
+export const GET_MOVIE_SUCCESS = 'GET_MOVIE_SUCCESS';
+export const GET_MOVIE_FAILURE = 'GET_MOVIE_FAILURE';
 export const CREATE_MOVIE_START = 'CREATE_MOVIE_START';
 export const CREATE_MOVIE_SUCCESS = 'CREATE_MOVIE_SUCCESS';
 export const CREATE_MOVIE_FAILURE = 'CREATE_MOVIE_FAILURE';
@@ -22,6 +25,20 @@ export const getMoviesSuccess = (movies) => ({
 
 export const getMoviesFailure = () => ({
   type: MOVIE_FAILURE,
+});
+
+export const getMovieStart = (id) => ({
+  type: GET_MOVIE_START,
+  payload: id,
+});
+
+export const getMovieSuccess = (movies) => ({
+  type: GET_MOVIE_SUCCESS,
+  payload: movies,
+});
+
+export const getMovieFailure = () => ({
+  type: GET_MOVIE_FAILURE,
 });
 
 export const createMoviesStart = () => ({

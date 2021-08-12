@@ -125,15 +125,6 @@ const NewMovie = () => {
           <input type='text' placeholder='Genre' name='genre' onChange={(e) => handleChange(e)} />
         </div>
         <div className='newmovie__item'>
-          <label>Duration</label>
-          <input
-            type='text'
-            placeholder='Duration'
-            name='duration'
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div className='newmovie__item'>
           <label>Limit</label>
           <input type='text' placeholder='Limit' name='limit' onChange={(e) => handleChange(e)} />
         </div>

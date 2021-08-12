@@ -6,6 +6,9 @@ import {
   getMoviesFailure,
   getMoviesStart,
   getMoviesSuccess,
+  getMovieStart,
+  getMovieSuccess,
+  getMovieFailure,
   createMoviesStart,
   createMoviesSuccess,
   createMoviesFailure,
@@ -25,6 +28,21 @@ export const getMovies = async (dispatch) => {
     dispatch(getMoviesSuccess(data));
   } catch (error) {
     dispatch(getMoviesFailure());
+  }
+};
+
+export const getMovie = async (id, dispatch) => {
+  dispatch(getMovieStart());
+
+  try {
+    const { data } = await axios.get(`/movies/${id}`, {
+      headers: { token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).signedToken },
+    });
+
+    dispatch(getMovieSuccess(data));
+    return Promise.resolve(data);
+  } catch (error) {
+    dispatch(getMovieFailure());
   }
 };
 

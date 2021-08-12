@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PlayArrow } from '@material-ui/icons';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState({});

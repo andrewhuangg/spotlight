@@ -1,31 +1,22 @@
-import React, { useState, useRef, useCallback, useEffect, useContext } from 'react';
-import { Search, Notifications, ArrowDropDown, AccountCircle } from '@material-ui/icons';
+import React, { useState, useEffect, useContext } from 'react';
+import { ArrowDropDown, AccountCircle } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext/AuthContext';
 import { logout } from '../context/authContext/AuthActions';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const mountedRef = useRef(true);
   const { dispatch } = useContext(AuthContext);
 
-  const windowScroll = useCallback(
-    (window.onscroll = () => {
-      if (!mountedRef) return null;
-      if (mountedRef) setIsScrolled(window.pageYOffset === 0 ? false : true);
-    }),
-    [mountedRef]
-  );
-
   useEffect(() => {
-    windowScroll();
-    return () => {
-      mountedRef.current = false;
+    window.onscroll = () => {
+      setIsScrolled(window.pageYOffset === 0 ? false : true);
     };
-  }, [windowScroll]);
+    return () => (window.onscroll = null);
+  }, []);
 
   return (
-    <div className={`navbar ${isScrolled ? 'scrolled' : ''}`} ref={mountedRef}>
+    <div className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className='navbar__container'>
         <div className='navbar__left'>
           <Link to='/' className='navbar__link'>

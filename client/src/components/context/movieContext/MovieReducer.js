@@ -2,6 +2,9 @@ import {
   MOVIE_START,
   MOVIE_SUCCESS,
   MOVIE_FAILURE,
+  GET_MOVIE_START,
+  GET_MOVIE_SUCCESS,
+  GET_MOVIE_FAILURE,
   CREATE_MOVIE_START,
   CREATE_MOVIE_SUCCESS,
   CREATE_MOVIE_FAILURE,
@@ -34,6 +37,27 @@ const movieReducer = (state, action) => {
     case MOVIE_FAILURE:
       return {
         movies: [],
+        isFetching: false,
+        error: true,
+      };
+
+    case GET_MOVIE_START:
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+
+    case GET_MOVIE_SUCCESS:
+      return {
+        movies: state.movies.filter((movie) => movie._id === payload),
+        isFetching: false,
+        error: false,
+      };
+
+    case GET_MOVIE_FAILURE:
+      return {
+        ...state,
         isFetching: false,
         error: true,
       };
