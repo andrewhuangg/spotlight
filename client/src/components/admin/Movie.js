@@ -18,7 +18,6 @@ const Movie = () => {
   const [imagePin, setImagePin] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [video, setVideo] = useState(null);
-
   const [uploaded, setUploaded] = useState(0);
 
   const handleChange = (e) => {
@@ -28,25 +27,29 @@ const Movie = () => {
 
   const upload = (items) => {
     items.forEach((item) => {
-      const fileName = new Date().getTime() + item.label + item.file.name;
-      const uploadTask = storage.ref(`/content/${fileName}`).put(item.file);
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
-        },
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          uploadTask.snapshot.ref.getDownloadURL().then((url) => {
-            console.log('File available at', url);
-            setCurrentMovie((prev) => ({ ...prev, [item.label]: url }));
-            setUploaded((prev) => prev + 1);
-          });
-        }
-      );
+      if (item.file.size > 0) {
+        const fileName = new Date().getTime() + item.label + item.file.name;
+        const uploadTask = storage.ref(`/content/${fileName}`).put(item.file);
+        uploadTask.on(
+          'state_changed',
+          (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+          },
+          (error) => {
+            console.log(error);
+          },
+          () => {
+            uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+              console.log('File available at', url);
+              setCurrentMovie((prev) => ({ ...prev, [item.label]: url }));
+              setUploaded((prev) => prev + 1);
+            });
+          }
+        );
+      } else {
+        setUploaded((prev) => prev + 1);
+      }
     });
   };
 
@@ -61,6 +64,11 @@ const Movie = () => {
     ]);
   };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    updateMovie(movieId, currentMovie, dispatch);
+  };
+
   useEffect(() => {
     getMovie(movieId, dispatch).then((data) => {
       setCurrentMovie({ ...data });
@@ -71,11 +79,6 @@ const Movie = () => {
       setImageTitle(data.imageTitle || '');
     });
   }, [dispatch]);
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    updateMovie(movieId, currentMovie, dispatch);
-  };
 
   return (
     <div className='movie'>
@@ -164,7 +167,7 @@ const Movie = () => {
                   id='trailer'
                   name='trailer'
                   style={{ display: 'none' }}
-                  onChange={(e) => setTrailer(URL.createObjectURL(e.target.files[0]))}
+                  onChange={(e) => setTrailer(e.target.files[0])}
                 />
               </div>
             </div>
@@ -181,7 +184,7 @@ const Movie = () => {
                   id='video'
                   name='video'
                   style={{ display: 'none' }}
-                  onChange={(e) => setVideo(URL.createObjectURL(e.target.files[0]))}
+                  onChange={(e) => setVideo(e.target.files[0])}
                 />
               </div>
             </div>
@@ -198,7 +201,7 @@ const Movie = () => {
                   id='thumbnail'
                   name='thumbnail'
                   style={{ display: 'none' }}
-                  onChange={(e) => setImagePin(URL.createObjectURL(e.target.files[0]))}
+                  onChange={(e) => setImagePin(e.target.files[0])}
                 />
               </div>
             </div>
@@ -215,7 +218,7 @@ const Movie = () => {
                   id='image'
                   name='imageHero'
                   style={{ display: 'none' }}
-                  onChange={(e) => setImageHero(URL.createObjectURL(e.target.files[0]))}
+                  onChange={(e) => setImageHero(e.target.files[0])}
                 />
               </div>
             </div>
@@ -232,7 +235,7 @@ const Movie = () => {
                   id='imageTitle'
                   name='imageTitle'
                   style={{ display: 'none' }}
-                  onChange={(e) => setImageTitle(URL.createObjectURL(e.target.files[0]))}
+                  onChange={(e) => setImageTitle(e.target.files[0])}
                 />
               </div>
             </div>
