@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Publish } from '@material-ui/icons';
 import { getMovie, updateMovie } from '../context/movieContext/MovieApi';
 import { MovieContext } from '../context/movieContext/MovieContext';
@@ -23,6 +23,25 @@ const Movie = () => {
   const handleChange = (e) => {
     const value = e.target.value;
     setCurrentMovie({ ...currentMovie, [e.target.name]: value });
+  };
+
+  const handleFile = async (e, cb) => {
+    const img = document.querySelector(`.movie__upload-image-${e.target.name}`);
+    const video = document.querySelector(`.movie__upload-video-${e.target.name}`);
+    const file = e.target.files[0];
+    cb(file);
+    const source = await URL.createObjectURL(file);
+    if (img) {
+      img.src = source;
+      img.onload = () => {
+        URL.revokeObjectURL(img.src);
+      };
+    } else if (video) {
+      video.src = source;
+      video.onload = () => {
+        URL.revokeObjectURL(video.src);
+      };
+    }
   };
 
   const upload = (items) => {
@@ -66,7 +85,9 @@ const Movie = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    updateMovie(movieId, currentMovie, dispatch);
+    updateMovie(movieId, currentMovie, dispatch).then((data) => {
+      if (data) window.location.reload();
+    });
   };
 
   useEffect(() => {
@@ -85,7 +106,7 @@ const Movie = () => {
       <div className='movie__header'>
         <h1 className='movie__title'>Movies</h1>
         <Link to='/admin/add-new-movie'>
-          <button className='movie__add-btn'>Create</button>
+          <button className='movie__add-btn'>Create New Movie</button>
         </Link>
       </div>
       <div className='movie__top'>
@@ -158,7 +179,11 @@ const Movie = () => {
             <div className='movie__file-containers'>
               <label>Trailer</label>
               <div className='movie__upload'>
-                <video className='movie__upload-image' src={trailer} alt='' />
+                <video
+                  className='movie__upload-video movie__upload-video-trailer'
+                  src={trailer}
+                  alt=''
+                />
                 <label htmlFor='trailer'>
                   <Publish className='movie__upload-btn' />
                 </label>
@@ -166,8 +191,9 @@ const Movie = () => {
                   type='file'
                   id='trailer'
                   name='trailer'
+                  accept='video/*'
                   style={{ display: 'none' }}
-                  onChange={(e) => setTrailer(e.target.files[0])}
+                  onChange={(e) => handleFile(e, setTrailer)}
                 />
               </div>
             </div>
@@ -175,7 +201,11 @@ const Movie = () => {
             <div className='movie__file-containers'>
               <label>Video</label>
               <div className='movie__upload'>
-                <video className='movie__upload-image' src={video} alt='' />
+                <video
+                  className='movie__upload-video movie__upload-video-video'
+                  src={video}
+                  alt=''
+                />
                 <label htmlFor='video'>
                   <Publish className='movie__upload-btn' />
                 </label>
@@ -183,8 +213,9 @@ const Movie = () => {
                   type='file'
                   id='video'
                   name='video'
+                  accept='video/*'
                   style={{ display: 'none' }}
-                  onChange={(e) => setVideo(e.target.files[0])}
+                  onChange={(e) => handleFile(e, setVideo)}
                 />
               </div>
             </div>
@@ -192,7 +223,11 @@ const Movie = () => {
             <div className='movie__file-containers'>
               <label>Thumbnail</label>
               <div className='movie__upload'>
-                <img className='movie__upload-image' src={imagePin} alt='' />
+                <img
+                  className='movie__upload-image movie__upload-image-thumbnail'
+                  src={imagePin}
+                  alt=''
+                />
                 <label htmlFor='thumbnail'>
                   <Publish className='movie__upload-btn' />
                 </label>
@@ -200,8 +235,9 @@ const Movie = () => {
                   type='file'
                   id='thumbnail'
                   name='thumbnail'
+                  accept='image/*'
                   style={{ display: 'none' }}
-                  onChange={(e) => setImagePin(e.target.files[0])}
+                  onChange={(e) => handleFile(e, setImagePin)}
                 />
               </div>
             </div>
@@ -209,7 +245,11 @@ const Movie = () => {
             <div className='movie__file-containers'>
               <label>Image</label>
               <div className='movie__upload'>
-                <img className='movie__upload-image' src={imageHero} alt='' />
+                <img
+                  className='movie__upload-image movie__upload-image-imageHero'
+                  src={imageHero}
+                  alt=''
+                />
                 <label htmlFor='image'>
                   <Publish className='movie__upload-btn' />
                 </label>
@@ -217,8 +257,9 @@ const Movie = () => {
                   type='file'
                   id='image'
                   name='imageHero'
+                  accept='image/*'
                   style={{ display: 'none' }}
-                  onChange={(e) => setImageHero(e.target.files[0])}
+                  onChange={(e) => handleFile(e, setImageHero)}
                 />
               </div>
             </div>
@@ -226,7 +267,11 @@ const Movie = () => {
             <div className='movie__file-containers'>
               <label>Title Image</label>
               <div className='movie__upload'>
-                <img className='movie__upload-image' src={imageTitle} alt='' />
+                <img
+                  className='movie__upload-image movie__upload-image-imageTitle'
+                  src={imageTitle}
+                  alt=''
+                />
                 <label htmlFor='imageTitle'>
                   <Publish className='movie__upload-btn' />
                 </label>
@@ -234,8 +279,9 @@ const Movie = () => {
                   type='file'
                   id='imageTitle'
                   name='imageTitle'
+                  accept='image/*'
                   style={{ display: 'none' }}
-                  onChange={(e) => setImageTitle(e.target.files[0])}
+                  onChange={(e) => handleFile(e, setImageTitle)}
                 />
               </div>
             </div>

@@ -9,9 +9,9 @@
   }
 
   &__add-btn {
-    width: 5rem;
+    width: 10rem;
+    padding: 0.5rem;
     border: none;
-    padding: 0.3125rem;
     background-color: teal;
     color: white;
     border-radius: 0.3125rem;
@@ -83,6 +83,7 @@
   }
 
   &__form-left {
+    width: 30rem;
     display: flex;
     flex-flow: column nowrap;
 
@@ -105,8 +106,10 @@
   }
 
   &__form-right {
+    width: 40rem;
+    height: 23rem;
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     justify-content: space-around;
   }
 
@@ -115,6 +118,7 @@
     align-items: center;
   }
 
+  &__upload-video,
   &__upload-image {
     width: 6.25rem;
     height: 6.25rem;

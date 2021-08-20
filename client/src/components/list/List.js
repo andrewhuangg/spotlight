@@ -22,7 +22,6 @@ const List = ({ list }) => {
   const handleSlider = (direction) => {
     const listLength = list.length;
     setListSliding(true);
-    console.log(listSliding);
 
     if (listPosition > 0) {
       setIsLeftSlide(true);

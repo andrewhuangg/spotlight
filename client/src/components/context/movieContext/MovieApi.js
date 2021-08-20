@@ -69,6 +69,8 @@ export const updateMovie = async (id, movie, dispatch) => {
       },
     });
     dispatch(updateMoviesSuccess(data));
+
+    return Promise.resolve(data);
   } catch (error) {
     dispatch(updateMoviesFailure());
   }
