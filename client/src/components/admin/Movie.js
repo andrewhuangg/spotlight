@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Publish } from '@material-ui/icons';
 import { getMovie, updateMovie } from '../context/movieContext/MovieApi';
 import { MovieContext } from '../context/movieContext/MovieContext';

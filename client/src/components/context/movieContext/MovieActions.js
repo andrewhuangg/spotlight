@@ -27,14 +27,13 @@ export const getMoviesFailure = () => ({
   type: MOVIE_FAILURE,
 });
 
-export const getMovieStart = (id) => ({
+export const getMovieStart = () => ({
   type: GET_MOVIE_START,
-  payload: id,
 });
 
-export const getMovieSuccess = (movies) => ({
+export const getMovieSuccess = (movie) => ({
   type: GET_MOVIE_SUCCESS,
-  payload: movies,
+  payload: movie,
 });
 
 export const getMovieFailure = () => ({

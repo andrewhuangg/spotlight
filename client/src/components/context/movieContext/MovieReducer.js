@@ -50,7 +50,7 @@ const movieReducer = (state, action) => {
 
     case GET_MOVIE_SUCCESS:
       return {
-        movies: state.movies.filter((movie) => movie._id === payload),
+        movies: state.movies.filter((movie) => movie._id === payload._id),
         isFetching: false,
         error: false,
       };

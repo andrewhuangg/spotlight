@@ -2,6 +2,9 @@ import {
   GET_USERS_START,
   GET_USERS_SUCCESS,
   GET_USERS_FAILURE,
+  GET_USER_START,
+  GET_USER_SUCCESS,
+  GET_USER_FAILURE,
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
   CREATE_USER_FAILURE,
@@ -32,6 +35,24 @@ const userReducer = (state, action) => {
     case GET_USERS_FAILURE:
       return {
         users: [],
+        isFetching: false,
+        error: true,
+      };
+    case GET_USER_START:
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case GET_USER_SUCCESS:
+      return {
+        users: state.users.filter((user) => user._id === payload._id),
+        isFetching: false,
+        error: false,
+      };
+    case GET_USER_FAILURE:
+      return {
+        ...state,
         isFetching: false,
         error: true,
       };

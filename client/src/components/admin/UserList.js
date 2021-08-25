@@ -39,7 +39,7 @@ const UserList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/admin/user/${params.row._id}`}>
+            <Link to={{ pathname: `/admin/user/${params.row._id}`, user: params.row }}>
               <button className='userlist__edit-btn'>Edit</button>
             </Link>
             <DeleteOutline

@@ -3,6 +3,9 @@ import {
   getUsersStart,
   getUsersSuccess,
   getUsersFailure,
+  getUserStart,
+  getUserSuccess,
+  getUserFailure,
   createUserStart,
   createUserSuccess,
   createUserFailure,
@@ -25,6 +28,21 @@ export const getUsers = async (dispatch) => {
     dispatch(getUsersSuccess(data));
   } catch (error) {
     dispatch(getUsersFailure());
+  }
+};
+
+export const getUser = async (id, dispatch) => {
+  dispatch(getUserStart());
+
+  try {
+    const { data } = await axios.get(`/users/${id}`, {
+      headers: { token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).signedToken },
+    });
+
+    dispatch(getUserSuccess(data));
+    return Promise.resolve(data);
+  } catch (error) {
+    dispatch(getUserFailure());
   }
 };
 
@@ -51,6 +69,8 @@ export const updateUser = async (id, user, dispatch) => {
     });
 
     dispatch(updateUserSuccess(data));
+
+    return Promise.resolve(data);
   } catch (error) {
     dispatch(updateUserFailure());
   }

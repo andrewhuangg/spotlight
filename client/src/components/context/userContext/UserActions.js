@@ -1,6 +1,9 @@
 export const GET_USERS_START = 'GET_USERS_START';
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const GET_USERS_FAILURE = 'GET_USERS_FAILURE';
+export const GET_USER_START = 'GET_USER_START';
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const GET_USER_FAILURE = 'GET_USER_FAILURE';
 export const CREATE_USER_START = 'CREATE_USER_START';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_FAILURE = 'CREATE_USER_FAILURE';
@@ -22,6 +25,19 @@ export const getUsersSuccess = (users) => ({
 
 export const getUsersFailure = () => ({
   type: GET_USERS_FAILURE,
+});
+
+export const getUserStart = () => ({
+  type: GET_USER_START,
+});
+
+export const getUserSuccess = (user) => ({
+  type: GET_USER_SUCCESS,
+  payload: user,
+});
+
+export const getUserFailure = () => ({
+  type: GET_USER_FAILURE,
 });
 
 export const createUserStart = () => ({
