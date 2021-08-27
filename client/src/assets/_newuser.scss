@@ -44,12 +44,12 @@
     border-radius: 0.3125rem;
   }
 
+  &__upload-btn,
   &__create-btn {
     width: 12.5rem;
     padding: 0.4375rem 0.625rem;
     margin-top: 1.875rem;
     border: none;
-    background-color: darkblue;
     color: white;
     font-weight: 600;
     border-radius: 0.625rem;
@@ -58,5 +58,30 @@
     &:hover {
       opacity: 0.9;
     }
+  }
+
+  &__create-btn {
+    background-color: $darkTurquoise;
+  }
+
+  &__upload-btn {
+    background-color: $salmon;
+  }
+
+  &__upload {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    width: 6.25rem;
+    height: 6.25rem;
+    margin-right: 1.25rem;
+    border-radius: 0.625rem;
+    object-fit: cover;
+  }
+
+  &__icon {
+    cursor: pointer;
   }
 }

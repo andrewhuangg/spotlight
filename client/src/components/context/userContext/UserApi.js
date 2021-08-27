@@ -50,11 +50,13 @@ export const createUser = async (user, dispatch) => {
   dispatch(createUserStart());
 
   try {
-    const { data } = await axios.post(`/users`, user, {
+    const { data } = await axios.post(`/auth/register`, user, {
       headers: { token: 'Bearer ' + JSON.parse(localStorage.getItem('user')).signedToken },
     });
 
     dispatch(createUserSuccess(data));
+
+    return Promise.resolve(data);
   } catch (error) {
     dispatch(createUserFailure());
   }

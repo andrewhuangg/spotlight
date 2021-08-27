@@ -70,7 +70,6 @@ const User = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     updateUser(userId, currentUser, dispatch).then((data) => {
-      console.log(data);
       if (data) window.location.reload();
     });
   };
